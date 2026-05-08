@@ -1,11 +1,10 @@
 {
   "name": "guadallab",
   "version": "1.0.0",
-  "source": "index.html",
   "homepage": "https://jrs2antoo.github.io/Proyecto-Sass-y-Parcel/",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir docs",
+    "build": "parcel build index.html --dist-dir docs --public-url /Proyecto-Sass-y-Parcel/",
     "sassdoc": "sassdoc src/scss/**/*.scss -d docs"
   },
   "devDependencies": {
