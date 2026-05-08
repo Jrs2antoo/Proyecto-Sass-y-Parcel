@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang=es><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><meta name=description content="GuadaLLab, laboratorio creativo de tecnologia, diseno y fabricacion digital."><title>GuadaLLab</title><link rel=stylesheet href=/GuadaLLab.1967997e.css><body>
+    <header class=header id=header>
+        <a class=header__logo href=#inicio aria-label="GuadaLLab inicio">
+            <img src=/GuadaLLab.a3d07959.jpeg alt="Logotipo de GuadaLLab">
+            <span>GuadaLLab</span>
+        </a>
+
+        <nav class=header__nav id=menu aria-label="Navegacion principal">
+            <ul class=header__nav-list>
+                <li class=header__nav-item><a class=header__nav-link href=#inicio>Inicio</a></li>
+                <li class=header__nav-item><a class=header__nav-link href=#proyectos>Proyectos</a></li>
+                <li class=header__nav-item><a class=header__nav-link href=#contacto>Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class=hero id=inicio>
+            <div class=hero__content>
+                <span class=hero__badge>GuadaLLab</span>
+                <h1 class=hero__title>Ideas que pasan de la mente al mundo real</h1>
+                <p class=hero__subtitle>
+                    Un espacio para crear prototipos, experimentar con tecnologia y construir soluciones.
+                </p>
+                <div class=hero__cta>
+                    <a class="btn--lg btn--primary" href=#proyectos>Ver proyectos</a>
+                    <a class="btn--lg btn--outline" href=#contacto>Contactar</a>
+                </div>
+            </div>
+            <a class=hero__scroll href=#proyectos>Scroll</a>
+        </section>
+
+        <section class=gallery id=proyectos>
+            <div class=gallery__inner>
+                <h2 class=section__title>Proyectos</h2>
+                <p class=section__subtitle>
+                    Piezas de automoción en impresión 3D! Aquí podrás encontrar todo lo que te puedas imaginar, lips delanteros, parrillas, admisiones y mucho más.
+                </p>
+
+                <div class=gallery__grid>
+                    <article class="gallery__item gallery__item--featured">
+                        <img class=gallery__img src=/admision.53842b7d.jpeg alt="Proyecto de pieza de automocion impresa en 3D">
+                        <div class=gallery__overlay>
+                            <span class=gallery__tag>Prototipo</span>
+                            <h3 class=gallery__item-title>Kit admision</h3>
+                        </div>
+                    </article>
+
+                    <article class=gallery__item>
+                        <img class=gallery__img src=/impresion.a6c22a00.jpeg alt="Prototipo de pieza personalizada para coche">
+                        <div class=gallery__overlay>
+                            <span class=gallery__tag>Nuestra impresora</span>
+                            <h3 class=gallery__item-title>Bambulab p2s combo</h3>
+                        </div>
+                    </article>
+
+                    <article class=gallery__item>
+                        <img class=gallery__img src=/impresion.a6c22a00.jpeg alt="Pieza fabricada con impresion 3D">
+                        <div class=gallery__overlay>
+                            <span class=gallery__tag>Fabricacion</span>
+                            <h3 class=gallery__item-title>Piezas impresas en 3D</h3>
+                        </div>
+                    </article>
+
+                    <article class=gallery__item>
+                        <img class=gallery__img src=/scanner.ee7d71f9.jpeg alt="Diseno de accesorio de automocion a medida">
+                        <div class=gallery__overlay>
+                            <span class=gallery__tag>Escaneos 100% precisos</span>
+                            <h3 class=gallery__item-title></h3>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class=contact id=contacto>
+            <div class=contact__inner>
+                <h2 class=section__title>Contacto</h2>
+                <p class=section__subtitle>Cuéntanos qué necesitas y prepararemos una propuesta a medida.</p>
+
+                <form class=contact__form action=# method=post>
+                    <div class=contact__group>
+                        <label class=contact__label for=nombre>Nombre <span class=contact__required>*</span></label>
+                        <input class=contact__input id=nombre name=nombre placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class=contact__group>
+                        <label class=contact__label for=problema>Problema</label>
+                        <select class=contact__select id=problema name=problema>
+                            <option value>Selecciona una opción</option>
+                            <option value=impresion-3d>Impresión 3D</option>
+                            <option value=escaneo-3d>Escaneo 3D</option>
+                            <option value=diseno-pieza>Diseño de pieza</option>
+                            <option value=automocion>Automoción</option>
+                            <option value=otro>Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="contact__group contact__group--full">
+                        <label class=contact__label for=concepto>Concepto <span class=contact__required>*</span></label>
+                        <input class=contact__input id=concepto name=concepto placeholder="Ej. admisión personalizada" required>
+                    </div>
+
+                    <div class="contact__group contact__group--full">
+                        <label class=contact__label for=problema-desarrollado>Problema o idea desarrollada <span class=contact__required>*</span></label>
+                        <textarea class=contact__textarea id=problema-desarrollado name=problema-desarrollado placeholder="Describe el problema, medidas, uso de la pieza o cualquier detalle importante." required></textarea>
+                    </div>
+
+                    <div class=contact__submit>
+                        <button class="btn--lg btn--primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class=footer>
+        <div class=footer__inner>
+            <div class=footer__brand>
+                <img src=/GuadaLLab.a3d07959.jpeg alt="Logotipo de GuadaLLab">
+                <p>Laboratorio de aprendizaje, impresión 3D y experimentacion tecnologica.</p>
+            </div>
+
+            <div>
+                <h2 class=footer__col-title>Mapa</h2>
+                <div class=footer__links>
+                    <a href=#inicio>Inicio</a>
+                    <a href=#proyectos>Proyectos</a>
+                    <a href=#contacto>Contacto</a>
+                </div>
+            </div>
+
+            <div>
+                <h2 class=footer__col-title>Contacto</h2>
+                <div class=footer__links>
+                    <a href=mailto:guadallabcontacto@gmail.com>guadallabcontacto@gmail.com</a>
+                    <a href=tel:+34000000000>+34 611 11 11 11</a>
+                    <a href=#>Granada</a>
+                </div>
+            </div>
+
+            <div>
+                <h2 class=footer__col-title>Redes</h2>
+                <div class=footer__socials>
+                    <a href=https://www.wallapop.es aria-label=Wallapop>W</a>
+                    <a href=https://www.instagram.com/guadallab/ aria-label=Instagram>I</a>
+                    <a href=https://www.tiktok.com/foryou aria-label="Tik Tok">T</a>
+                </div>
+            </div>
+        </div>
+
+        <div class=footer__bottom>
+            <p>© 2026 GuadaLLab. Todos los derechos reservados.</p>
+            <div class=footer__bottom-links>
+                <a href=#>Privacidad</a>
+                <a href=#>Legal</a>
+            </div>
+        </div>
+    </footer>
+
+
