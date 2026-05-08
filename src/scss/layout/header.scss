@@ -1,0 +1,97 @@
+////
+/// Header y navegación del proyecto GuadaLLab
+/// @group Layout
+////
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    @include mix.flexposition(row, space-between, center);
+    transition: all 0.4s ease;
+
+    &--scrolled {
+        @include mix.glass-effect;
+    }
+
+    &__logo {
+        @include mix.flexposition(row, flex-start, center);
+        gap: 1rem;
+
+        img {
+            height: 4.5rem;
+            width: auto;
+        }
+
+        span {
+            font-family: vars.$font-family-titles;
+            font-size: vars.size(sm);
+            font-weight: vars.weight("bold");
+            letter-spacing: 0.1em;
+            color: vars.color(quaternary);
+        }
+    }
+
+    &__nav {
+        @include mix.navigation;
+    }
+
+    &__menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        span {
+            display: block;
+            width: 2.5rem;
+            height: 0.2rem;
+            background: vars.color(quaternary);
+            transition: all 0.3s;
+        }
+    }
+
+    @include mix.media(large) {
+        &__nav-list {
+            gap: 3rem;
+        }
+    }
+
+    @media screen and (max-width: 48rem) {
+        padding: 1.5rem 2rem;
+
+        &__menu-toggle {
+            display: flex;
+        }
+
+        &__nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background: vars.color(tertiary);
+            border-left: 0.1rem solid vars.color(quaternary-m);
+            @include mix.flexposition(column, center, center);
+            transition: right 0.4s ease;
+
+            &--open {
+                right: 0;
+            }
+
+            &-list {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            &-link {
+                font-size: vars.size(sm) !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+# Dependencias
+node_modules/
+
+# Cache de Parcel
+.parcel-cache/
+
+# Build
+dist/
+
+# Logs
+npm-debug.log*
+
+# Archivos del sistema
+.DS_Store

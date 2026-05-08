@@ -1,0 +1,21 @@
+////
+/// Botones del proyecto GuadaLLab
+/// @group Componentes
+////
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.btn {
+    &--primary {
+        @include mix.btn-tech(solid);
+    }
+
+    &--outline {
+        @include mix.btn-tech(outline);
+    }
+
+    &--lg {
+        padding: 1.6rem 4rem;
+        font-size: vars.size(xxs) * 1.1;
+    }
+}

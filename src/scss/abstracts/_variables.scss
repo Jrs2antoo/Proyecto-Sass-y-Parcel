@@ -1,0 +1,106 @@
+////
+/// Proyecto: GuadaLLab
+/// @author Antonio Moreno Mellado
+////
+@use "sass:map";
+@use "sass:list";
+
+@import "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:wght@300;400;700&display=swap";
+
+// COLORES DEL PROYECTO
+
+/// Paleta de colores del proyecto
+/// @group Colores
+/// @type Map
+$colors: (
+    primary:      #0d0d0d,
+    primary-m:    #0d0d0d99,
+    secondary:    #ffffff,
+    tertiary:     #1a1a1a,
+    quaternary:   #2ec4b6,
+    quaternary-m: #2ec4b655,
+    accent:       #1a8a80,
+    gris:         #888888,
+    gris-m:       #88888833,
+    negro:        #000000,
+    blanco:       #ffffff,
+);
+
+/// Obtiene un color del mapa $colors
+/// @group Colores
+/// @param {String} $name - Nombre del color
+/// @return {Color} Valor hexadecimal
+@function color($name) {
+    @if map.has-key($colors, $name) {
+        @return map.get($colors, $name);
+    } @else {
+        @error "El color '#{$name}' no existe en $colors.";
+    }
+}
+
+// TIPOGRAFÍA DEL PROYECTO
+
+/// Familia de fuente para títulos
+/// @group Tipografía
+/// @type String
+$font-family-titles: 'Orbitron', sans-serif;
+
+/// Familia de fuente para cuerpo
+/// @group Tipografía
+/// @type String
+$font-family: 'Nunito', sans-serif;
+
+/// Tamaños de fuente
+/// @group Tipografía
+/// @type Map
+$font-sizes: (
+    xxl: 6rem,
+    xl:  3rem,
+    lg:  2.5rem,
+    md:  2rem,
+    sm:  1.8rem,
+    xs:  1.6rem,
+    xxs: 1.2rem
+);
+
+/// Obtiene un tamaño de fuente
+/// @group Tipografía
+/// @param {String} $size - Clave del tamaño
+/// @return {Number} Valor en rem
+@function size($size) {
+    @return map.get($font-sizes, $size);
+}
+
+/// Pesos de fuente
+/// @group Tipografía
+/// @type Map
+$font-weights: (
+    "light":   300,
+    "regular": 400,
+    "bold":    700
+);
+
+/// Obtiene el peso de fuente
+/// @group Tipografía
+/// @param {String} $weight - Nombre del peso
+/// @return {Number} Valor numérico
+@function weight($weight) {
+    @return map.get($font-weights, $weight);
+}
+
+// BORDES DEL PROYECTO
+
+/// Lista de tamaños de borde
+/// @group Estilos Base
+$borders: (0.1rem, 0.2rem, 0.5rem, 1rem);
+
+/// Obtiene un borde por índice
+/// @group Estilos Base
+/// @param {Number} $index - Posición en la lista (1-4)
+/// @return {Number} Valor en rem
+@function get-border($index) {
+    @if $index > list.length($borders) or $index <= 0 {
+        @error "Índice no existe. La lista solo tiene #{list.length($borders)} elementos.";
+    }
+    @return list.nth($borders, $index);
+}

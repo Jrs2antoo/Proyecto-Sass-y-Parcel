@@ -1,0 +1,96 @@
+////
+/// Sección de contacto del proyecto GuadaLLab
+/// @group Componentes
+////
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.contact {
+    @include mix.section-padding(10rem, 2rem);
+    background: vars.color(tertiary);
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0.1rem;
+        background: linear-gradient(90deg, transparent, vars.color(quaternary), transparent);
+    }
+
+    &__inner {
+        max-width: 80rem;
+        margin: 0 auto;
+    }
+
+    &__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 5rem;
+
+        @media screen and (max-width: 37.5rem) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__group {
+        @include mix.flexposition(column, flex-start, flex-start);
+        gap: 0.8rem;
+
+        &--full {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__label {
+        font-family: vars.$font-family-titles;
+        font-size: vars.size(xxs);
+        font-weight: vars.weight("bold");
+        color: vars.color(quaternary);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    &__required {
+        color: vars.color(secondary);
+    }
+
+    &__input,
+    &__textarea,
+    &__select {
+        width: 100%;
+        background: vars.color(primary);
+        border: 0.1rem solid vars.color(gris-m);
+        border-radius: 0.3rem;
+        padding: 1.2rem 1.6rem;
+        font-family: vars.$font-family;
+        font-size: vars.size(xxs);
+        color: vars.color(secondary);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+        appearance: none;
+
+        &::placeholder {
+            color: vars.color(gris);
+        }
+
+        &:focus {
+            border-color: vars.color(quaternary);
+            box-shadow: 0 0 0 0.3rem vars.color(quaternary-m);
+        }
+    }
+
+    &__textarea {
+        min-height: 14rem;
+        resize: vertical;
+    }
+
+    &__submit {
+        grid-column: 1 / -1;
+        @include mix.flexposition;
+        margin-top: 1rem;
+    }
+}

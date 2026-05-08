@@ -1,0 +1,110 @@
+////
+/// Footer del proyecto GuadaLLab
+/// @group Layout
+////
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.footer {
+    background: vars.color(negro);
+    border-top: 0.1rem solid vars.color(quaternary-m);
+    @include mix.section-padding(5rem, 3rem);
+
+    &__inner {
+        max-width: 120rem;
+        margin: 0 auto;
+        @include mix.grid-flexible(20rem, 4rem);
+        margin-bottom: 4rem;
+    }
+
+    &__brand {
+        img {
+            height: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: vars.size(xxs);
+            color: vars.color(gris);
+            max-width: 24rem;
+        }
+    }
+
+    &__col-title {
+        font-family: vars.$font-family-titles;
+        font-size: vars.size(xxs);
+        font-weight: vars.weight("bold");
+        color: vars.color(quaternary);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+    }
+
+    &__links {
+        @include mix.flexposition(column, flex-start, flex-start);
+        gap: 1rem;
+
+        a {
+            font-size: vars.size(xxs);
+            color: vars.color(gris);
+            transition: color 0.3s;
+
+            &:hover {
+                color: vars.color(quaternary);
+            }
+        }
+    }
+
+    &__socials {
+        @include mix.flexposition(row, flex-start, center);
+        gap: 1.5rem;
+        margin-top: 1rem;
+
+        a {
+            width: 4rem;
+            height: 4rem;
+            border: 0.1rem solid vars.color(quaternary-m);
+            border-radius: 50%;
+            @include mix.flexposition;
+            color: vars.color(gris);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+
+            &:hover {
+                border-color: vars.color(quaternary);
+                color: vars.color(quaternary);
+                background: vars.color(quaternary-m);
+            }
+        }
+    }
+
+    &__bottom {
+        max-width: 120rem;
+        margin: 0 auto;
+        padding-top: 2rem;
+        border-top: 0.1rem solid vars.color(gris-m);
+        @include mix.flexposition(row, space-between, center);
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        p {
+            font-size: vars.size(xxs);
+            color: vars.color(gris);
+        }
+
+        &-links {
+            @include mix.flexposition(row, center, center);
+            gap: 2rem;
+
+            a {
+                font-size: vars.size(xxs);
+                color: vars.color(gris);
+                transition: color 0.3s;
+
+                &:hover {
+                    color: vars.color(quaternary);
+                }
+            }
+        }
+    }
+}

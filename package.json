@@ -1,0 +1,15 @@
+{
+  "name": "guadallab",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "sassdoc": "sassdoc src/scss/**/*.scss -d docs"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4",
+    "parcel": "^2.15.2",
+    "sass": "^1.89.0",
+    "sassdoc": "^2.7.4"
+  }
+}

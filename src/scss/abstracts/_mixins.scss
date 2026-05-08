@@ -1,0 +1,219 @@
+////
+/// Proyecto: GuadaLLab
+////
+@use "sass:map";
+@use "sass:color";
+@use "variables" as vars;
+
+// MIXINS DE CLASE
+
+/// Aplica un borde sólido y radio de esquina estándar
+/// @group Estilos Base
+@mixin border_radius {
+    border: 0.1rem solid vars.color(quaternary);
+    border-radius: 0.5rem;
+}
+
+/// Configuración rápida de Flexbox
+/// @group Layout
+/// @param {String} $direction [row] - Dirección del flex
+/// @param {String} $justifycontent [center] - Alineación horizontal
+/// @param {String} $alignitem [center] - Alineación vertical
+/// @example scss
+///     .footer {
+///         @include flexposition(column, center, center);
+///     }
+@mixin flexposition($direction: row, $justifycontent: center, $alignitem: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justifycontent;
+    align-items: $alignitem;
+}
+
+/// Grid básico de 9 columnas
+/// @group Layout
+@mixin layout_basico() {
+    display: grid;
+    grid-template-columns: minmax(10rem, 1fr) repeat(7, minmax(min-content, 16rem)) minmax(10rem, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    gap: 2rem;
+}
+
+/// Crea una rejilla flexible con columnas auto-ajustables
+/// @group Layout
+/// @param {Number} $min-size [18rem] - Tamaño mínimo de cada columna
+/// @param {Number} $gap [1.5rem] - Espaciado entre celdas
+/// @example scss
+///     .products-list {
+///         @include grid-flexible(18rem, 1.5rem);
+///     }
+@mixin grid-flexible($min-size: 18rem, $gap: 1.5rem) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
+    gap: $gap;
+}
+
+/// Estilos del menú de navegación
+/// @group Layout
+@mixin navigation() {
+    &-list {
+        @include flexposition(row, space-around);
+        height: 100%;
+    }
+    &-item {
+        list-style-type: none;
+    }
+    &-link {
+        color: vars.color(secondary);
+        font-size: vars.size(xs);
+        text-decoration: none;
+        transition: all 0.5s;
+        &:hover {
+            color: vars.color(quaternary);
+        }
+    }
+}
+
+/// Cabeceras h1 a h3 con Orbitron
+/// @group Tipografía
+@mixin cabeceras {
+    @for $i from 1 through 3 {
+        h#{$i} {
+            font-family: vars.$font-family-titles;
+            font-size: vars.size(sm) * (2 - ($i * 0.2));
+            font-weight: vars.weight("bold");
+        }
+    }
+}
+
+/// Media queries mobile-first
+/// @group Layout
+/// @param {String} $clave - Tamaño (small, medium, large, xlarge, xxlarge)
+/// @example scss
+///     .hero {
+///         @include media(medium) { flex-direction: row; }
+///     }
+$sizes: (
+    small:   36rem,
+    medium:  48rem,
+    large:   62rem,
+    xlarge:  75rem,
+    xxlarge: 87.5rem
+);
+
+@mixin media($clave) {
+    $size: map.get($sizes, $clave);
+    @media screen and (min-width: $size) {
+        @content;
+    }
+}
+
+// MIXINS PROPIOS DE GuadaLLab
+
+/// Efecto hover en cards: elevación + borde aqua
+/// @group Componentes
+/// @example scss
+///     .card {
+///         @include card-hover;
+///     }
+@mixin card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    &:hover {
+        transform: translateY(-0.4rem);
+        box-shadow: 0 0.8rem 2rem vars.color(quaternary-m);
+        border-color: vars.color(quaternary);
+    }
+}
+
+/// Padding vertical uniforme para secciones
+/// @group Layout
+/// @param {Number} $v [6rem] - Padding vertical
+/// @param {Number} $h [2rem] - Padding horizontal
+/// @example scss
+///     .features {
+///         @include section-padding(8rem, 2rem);
+///     }
+@mixin section-padding($v: 6rem, $h: 2rem) {
+    padding: $v $h;
+}
+
+/// Texto con gradiente aqua → blanco
+/// @group Tipografía
+/// @example scss
+///     .hero__title {
+///         @include text-gradient;
+///     }
+@mixin text-gradient {
+    background: linear-gradient(90deg, vars.color(quaternary), vars.color(secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/// Efecto glassmorphism para el header con scroll
+/// @group Componentes
+/// @example scss
+///     .header--scrolled {
+///         @include glass-effect;
+///     }
+@mixin glass-effect {
+    background: vars.color(primary-m);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+    border-bottom: 0.1rem solid vars.color(quaternary-m);
+}
+
+/// Línea decorativa tipo "scan" tech debajo de un título
+/// @group Tipografía
+/// @param {Color} $color [quaternary] - Color de la línea
+/// @example scss
+///     .section__title::after {
+///         @include scan-line;
+///     }
+@mixin scan-line($color: vars.color(quaternary)) {
+    content: '';
+    display: block;
+    width: 6rem;
+    height: 0.2rem;
+    background: $color;
+    margin: 1.2rem auto 0;
+}
+
+/// Botón base con variantes de estilo tech
+/// @group Componentes
+/// @param {String} $variant [solid] - solid | outline
+/// @example scss
+///     .btn-primary {
+///         @include btn-tech(solid);
+///     }
+@mixin btn-tech($variant: solid) {
+    display: inline-block;
+    font-family: vars.$font-family-titles;
+    font-size: vars.size(xxs);
+    font-weight: vars.weight("bold");
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.2rem 3rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    @if $variant == solid {
+        background: vars.color(quaternary);
+        color: vars.color(negro);
+        border: 0.2rem solid vars.color(quaternary);
+        &:hover {
+            background: transparent;
+            color: vars.color(quaternary);
+        }
+    } @else if $variant == outline {
+        background: transparent;
+        color: vars.color(quaternary);
+        border: 0.2rem solid vars.color(quaternary);
+        &:hover {
+            background: vars.color(quaternary);
+            color: vars.color(negro);
+        }
+    }
+}
